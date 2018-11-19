@@ -6,11 +6,15 @@ const http = require('http');
 const json = fs.readFileSync(`${__dirname}/data/data.json`, 'utf-8');
 const laptopData = JSON.parse(json);
 
-console.log(laptopData);
+// console.log(laptopData);
 
 
 const server = http.createServer((req, res) => {
-    console.log('Someone is in the server!');
+    res.writeHead(200, { 'Content-type': 'text/html'});
+    res.end('A response');
 });
 
-
+var port = 8080;
+server.listen(port, '127.0.0.1', () => {
+    console.log(`Listening to port ${port}`);
+});
