@@ -13,6 +13,7 @@ const laptopData = JSON.parse(json);
 const server = http.createServer((req, res) => {
 
     const pathName = url.parse(req.url, true).pathname;
+    const id = url.parse(req.url, true).query.id;
 
     if (pathName === '/products' || pathName === '') {
         res.writeHead(200, { 'Content-type': 'text/html'});
@@ -21,7 +22,7 @@ const server = http.createServer((req, res) => {
 
     else if (pathName === '/laptop') {
         res.writeHead(200, { 'Content-type': 'text/html'});
-        res.end('Displaying the LAPTOP page');
+        res.end(`Displaying the LAPTOP page for laptop ${id} :`);
     }
 
     else {
